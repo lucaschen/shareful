@@ -2,7 +2,7 @@
   "name": "shareful",
   "version": "0.0.0",
   "description": "React component state, managed in a shared and component-ful way.",
-  "main": "index.js",
+  "main": "src/shareful.js",
   "scripts": {
     "flow": "flow",
     "test": "jest"
