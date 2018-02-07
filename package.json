@@ -4,7 +4,8 @@
   "description": "React component state, managed in a shared and component-ful way.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "flow": "flow",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -14,5 +15,29 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/parkroolucas/shareful/issues"
+  },
+  "dependencies": {
+    "create-react-context": "~0.1.6"
+  },
+  "peerDependencies": {
+    "prop-types": "^15.5.0",
+    "react": "^15.0.0 || ^16.0.0",
+    "react-dom": "^15.0.0 || ^16.0.0"
+  },
+  "devDependencies": {
+    "babel-core": "~6.26.0",
+    "babel-jest": "~22.1.0",
+    "babel-plugin-transform-class-properties": "~6.24.1",
+    "babel-preset-env": "~1.6.1",
+    "babel-preset-flow": "~6.23.0",
+    "babel-preset-react": "~6.24.1",
+    "babel-preset-stage-3": "~6.24.1",
+    "babel-register": "~6.26.0",
+    "flow-bin": "~0.65.0",
+    "jest": "~22.1.4",
+    "prop-types": "~15.6.0",
+    "react": "~16.2.0",
+    "react-dom": "~16.2.0",
+    "regenerator-runtime": "~0.11.1"
   }
 }
