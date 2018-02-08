@@ -5,8 +5,8 @@ export default class Counter extends Component {
     return (
       <div>
         <pre>{JSON.stringify(this.props, null, 2)}</pre>
-        <button onClick={this.props.shared[0].increment}>Click Me</button>
-        <p>{this.props.shared[0].state.count}</p>
+        <button onClick={this.props.increment}>Click Me</button>
+        <p>{this.props.count}</p>
       </div>
     );
   }

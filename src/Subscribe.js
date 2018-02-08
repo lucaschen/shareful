@@ -8,6 +8,7 @@ import StateContext from "./StateContext";
 
 export type ContainersType = Array<Class<ContainerType>>;
 export type ContainerMapType = Map<Class<ContainerType>, ContainerType>;
+export type MapContainersToPropsType = (...Array<ContainerType>) => Object;
 export type SubscribedComponentProps = {
   children: Node
 };
@@ -15,7 +16,9 @@ export type SubscribedComponentState = {};
 
 const DUMMY_STATE = {};
 
-export default (Containers: ContainersType) => (ComponentToBind: Class<Component<*, *>>) =>
+export default (Containers: ContainersType, mapContainersToProps: MapContainersToPropsType) => (
+  ComponentToBind: Class<Component<*, *>>
+) =>
   class WithSubscription extends Component<SubscribedComponentProps, SubscribedComponentState> {
     static propTypes = {
       children: PropTypes.func.isRequired
@@ -71,7 +74,8 @@ export default (Containers: ContainersType) => (ComponentToBind: Class<Component
         <StateContext.Consumer>
           {map => {
             const sharedData = this._createInstances(map, Containers);
-            return <ComponentToBind {...this.props} shared={sharedData} />;
+            console.log(mapContainersToProps(...sharedData));
+            return <ComponentToBind {...this.props} {...mapContainersToProps(...sharedData)} />;
           }}
         </StateContext.Consumer>
       );

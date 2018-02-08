@@ -5,7 +5,7 @@ export default class Step extends Component {
     this.inputEl.value = this.getStep();
   }
 
-  getStep = () => this.props.shared[0].state.step;
+  getStep = () => this.props.step;
 
   handleBlur = () => {
     const newValue = this.inputEl.value;
@@ -14,7 +14,7 @@ export default class Step extends Component {
       this.inputEl.value = this.getStep();
     }
 
-    this.props.shared[0].setStep(parseInt(this.inputEl.value));
+    this.props.setStep(parseInt(this.inputEl.value));
   };
 
   render() {

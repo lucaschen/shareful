@@ -4,4 +4,9 @@ import CounterContainer from "@root/containers/CounterContainer";
 
 import Step from "./Step";
 
-export default Subscribe([CounterContainer])(Step);
+const mapContainersToProps = counter => ({
+  setStep: counter.setStep,
+  step: counter.state.step
+});
+
+export default Subscribe([CounterContainer], mapContainersToProps)(Step);
