@@ -1,9 +1,6 @@
 const path = require("path");
 
-const includePaths = [
-  path.resolve(__dirname, "./src"),
-  path.resolve(__dirname, "./node_modules/shareful/")
-];
+const includePaths = [path.resolve(__dirname, "./src"), path.resolve(__dirname, "./node_modules/shareful/")];
 
 module.exports = {
   devServer: {
@@ -12,6 +9,7 @@ module.exports = {
     hot: true,
     watchContentBase: true
   },
+  devtool: "source-map",
   entry: path.resolve(__dirname, "./src/App.js"),
   output: {
     filename: "bundle.js",
