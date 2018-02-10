@@ -25,7 +25,7 @@ const Root = () => (
   </Provider>
 );
 
-const _Counter = ({ count, decrement, increment }) => (
+const _Counter = ({ count, decrement, increment, setStep }) => (
   <div>
     <button data-decrement onClick={decrement}>
       -{count}
@@ -34,13 +34,17 @@ const _Counter = ({ count, decrement, increment }) => (
     <button data-increment onClick={increment}>
       +{count}
     </button>
+    <button data-set-step onClick={() => setStep(5)}>
+      Set step to 5
+    </button>
   </div>
 );
 
-const mapContainersToProps = ({ decrement, increment, state: { count } }) => ({
+const mapContainersToProps = ({ decrement, increment, setStep, state: { count } }) => ({
   count,
   decrement,
-  increment
+  increment,
+  setStep
 });
 
 const Counter = Subscribe([CounterContainer], mapContainersToProps)(_Counter);
@@ -55,9 +59,14 @@ test("Provider", () => {
     </Provider>
   );
 
+  expect(counter.state.step).toBe(1);
+
   tree.find("[data-increment]").simulate("click");
   expect(counter.state.count).toBe(1);
 
   tree.find("[data-decrement]").simulate("click");
   expect(counter.state.count).toBe(0);
+
+  tree.find("[data-set-step]").simulate("click");
+  expect(counter.state.step).toBe(5);
 });
