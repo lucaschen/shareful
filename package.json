@@ -33,6 +33,8 @@
     "babel-preset-react": "~6.24.1",
     "babel-preset-stage-3": "~6.24.1",
     "babel-register": "~6.26.0",
+    "enzyme": "~3.3.0",
+    "enzyme-adapter-react-16": "~1.1.1",
     "flow-bin": "~0.65.0",
     "jest": "~22.1.4",
     "prop-types": "~15.6.0",

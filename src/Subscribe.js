@@ -20,10 +20,6 @@ export default (Containers: ContainersType, mapContainersToProps: MapContainersT
   ComponentToBind: Class<Component<*, *>>
 ) =>
   class WithSubscription extends Component<SubscribedComponentProps, SubscribedComponentState> {
-    static propTypes = {
-      children: PropTypes.func.isRequired
-    };
-
     state = {};
     instances: Array<ContainerType> = [];
 
@@ -74,7 +70,6 @@ export default (Containers: ContainersType, mapContainersToProps: MapContainersT
         <StateContext.Consumer>
           {map => {
             const sharedData = this._createInstances(map, Containers);
-            console.log(mapContainersToProps(...sharedData));
             return <ComponentToBind {...this.props} {...mapContainersToProps(...sharedData)} />;
           }}
         </StateContext.Consumer>
