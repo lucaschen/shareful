@@ -2,9 +2,16 @@
   "name": "shareful",
   "version": "2.0.2",
   "description": "React component state, managed in a shared and component-ful way.",
-  "main": "src/shareful.js",
+  "main": "lib/shareful.js",
+  "module": "lib/shareful.es.js",
+  "files": [
+    "lib"
+  ],
   "scripts": {
+    "build": "rollup -c",
+    "clean": "rm -rf lib/",
     "flow": "flow",
+    "prepublish": "npm run clean && npm run build",
     "test": "jest"
   },
   "repository": {
@@ -27,6 +34,7 @@
   "devDependencies": {
     "babel-core": "~6.26.0",
     "babel-jest": "~22.1.0",
+    "babel-plugin-external-helpers": "~6.22.0",
     "babel-plugin-transform-class-properties": "~6.24.1",
     "babel-preset-env": "~1.6.1",
     "babel-preset-flow": "~6.23.0",
@@ -40,6 +48,9 @@
     "prop-types": "~15.6.0",
     "react": "~16.2.0",
     "react-dom": "~16.2.0",
-    "regenerator-runtime": "~0.11.1"
+    "regenerator-runtime": "~0.11.1",
+    "rollup": "~0.55.5",
+    "rollup-plugin-babel": "~3.0.3",
+    "rollup-plugin-uglify": "~3.0.0"
   }
 }

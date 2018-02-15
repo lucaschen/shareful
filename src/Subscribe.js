@@ -1,6 +1,5 @@
 // @flow
 
-import PropTypes from "prop-types";
 import React, { Component, type Node } from "react";
 
 import type { ContainerType } from "./Container";
