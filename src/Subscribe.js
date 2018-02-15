@@ -2,7 +2,7 @@
 
 import React, { Component, type Node } from "react";
 
-import type { ContainerType } from "./Container";
+import ContainerClass, { type ContainerType } from "./Container";
 import StateContext from "./StateContext";
 
 export type ContainersType = Array<Class<ContainerType>>;
@@ -47,6 +47,9 @@ export default (Containers: ContainersType, mapContainersToProps: MapContainersT
 
       let safeMap = map;
       let instances = containers.map(Container => {
+        if (!Container || !Container.prototype || !(Container.prototype instanceof ContainerClass)) {
+          throw new Error("Provided container is not an instance of Container!");
+        }
         let instance = safeMap.get(Container);
 
         if (!instance) {
