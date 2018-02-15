@@ -1,6 +1,6 @@
 {
   "name": "shareful",
-  "version": "2.0.2",
+  "version": "2.1.0",
   "description": "React component state, managed in a shared and component-ful way.",
   "main": "lib/shareful.js",
   "module": "lib/shareful.es.js",
