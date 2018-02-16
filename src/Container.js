@@ -10,11 +10,13 @@ export default class Container<State: {}> {
     this._listeners = [];
   }
 
-  setState(state: $Shape<State>) {
-    this.state = {
-      ...this.state,
-      ...state
-    };
+  setState(state: ?$Shape<State>) {
+    if (typeof state === "object") {
+      this.state = {
+        ...this.state,
+        ...state
+      };
+    }
     this._listeners.forEach(fn => fn());
   }
 
