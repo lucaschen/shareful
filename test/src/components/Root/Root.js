@@ -7,7 +7,7 @@ export default class Root extends Component {
   render() {
     return (
       <div>
-        <Counter />
+        <Counter id="5" />
         <Step />
       </div>
     );

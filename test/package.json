@@ -19,7 +19,7 @@
     "react": "~16.2.0",
     "react-dom": "~16.2.0",
     "sass-loader": "~6.0.6",
-    "shareful": "*",
+    "shareful": "~2.3.0",
     "style-loader": "~0.20.1",
     "webpack": "~3.10.0"
   },
