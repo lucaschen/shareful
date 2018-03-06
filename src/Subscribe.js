@@ -72,7 +72,7 @@ export default (Containers: ContainersType, mapContainersToProps: MapContainersT
         <StateContext.Consumer>
           {map => {
             const sharedData = this._createInstances(map, Containers);
-            return <ComponentToBind {...this.props} {...mapContainersToProps(...sharedData)} />;
+            return <ComponentToBind {...this.props} {...mapContainersToProps(...sharedData, this.props)} />;
           }}
         </StateContext.Consumer>
       );
