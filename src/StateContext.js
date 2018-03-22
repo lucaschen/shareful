@@ -1,7 +1,7 @@
 // @flow
 
-import createReactContext from "create-react-context";
+import { createContext } from "react";
 
-const StateContext = createReactContext(null);
+const StateContext = createContext(null);
 
 export default StateContext;
