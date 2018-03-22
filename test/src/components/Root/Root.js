@@ -1,14 +1,37 @@
+// @flow
+
 import React, { Component } from "react";
+import { Provider } from "shareful";
 
-import Counter from "./Counter";
-import Step from "./Step";
+import CounterWrapper from "./CounterWrapper";
 
-export default class Root extends Component {
+type State = {
+  providerOn: boolean
+};
+
+export default class Root extends Component<{}, State> {
+  state = {
+    providerOn: true
+  };
+
+  toggleProvider = () => this.setState({ providerOn: !this.state.providerOn });
+
   render() {
     return (
       <div>
-        <Counter id="5" />
-        <Step />
+        {this.state.providerOn && (
+          <Provider>
+            <CounterWrapper />
+          </Provider>
+        )}
+        {this.state.providerOn && (
+          <Provider>
+            <CounterWrapper />
+          </Provider>
+        )}
+        <button onClick={this.toggleProvider} style={{ fontSize: 40, marginTop: 40 }}>
+          TOGGLE THE PROVIDER
+        </button>
       </div>
     );
   }
