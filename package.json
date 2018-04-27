@@ -1,6 +1,6 @@
 {
   "name": "shareful",
-  "version": "3.0.0-alpha.1",
+  "version": "3.0.0",
   "description": "React component state, managed in a shared and component-ful way.",
   "main": "lib/shareful.js",
   "module": "lib/shareful.es.js",
@@ -25,8 +25,8 @@
   },
   "peerDependencies": {
     "prop-types": "^15.5.0",
-    "react": "^16.3.0-alpha.0",
-    "react-dom": "^16.3.0-alpha.0"
+    "react": "^16.3.0",
+    "react-dom": "^16.3.0"
   },
   "devDependencies": {
     "babel-core": "~6.26.0",
@@ -41,10 +41,10 @@
     "enzyme": "~3.3.0",
     "enzyme-adapter-react-16": "~1.1.1",
     "flow-bin": "~0.65.0",
-    "jest": "~22.1.4",
+    "jest": "~22.4.3",
     "prop-types": "~15.6.0",
-    "react": "~16.3.0-alpha.2",
-    "react-dom": "~16.3.0-alpha.2",
+    "react": "~16.3.2",
+    "react-dom": "~16.3.2",
     "regenerator-runtime": "~0.11.1",
     "rollup": "~0.55.5",
     "rollup-plugin-babel": "~3.0.3",
