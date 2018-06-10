@@ -1,7 +1,8 @@
 // @flow
 
-import React, { Component, type Node } from "react";
+import React, { Component, type ComponentType, type Node } from "react";
 
+import getDisplayName from "./helpers/getDisplayName";
 import ContainerClass, { type ContainerType } from "./Container";
 import StateContext from "./StateContext";
 
@@ -16,8 +17,8 @@ export type SubscribedComponentState = {};
 const DUMMY_STATE = {};
 
 export default (Containers: ContainersType, mapContainersToProps: MapContainersToPropsType) => (
-  ComponentToBind: Class<Component<*, *>>
-) =>
+  ComponentToBind: ComponentType<Object>
+) => {
   class WithSubscription extends Component<SubscribedComponentProps, SubscribedComponentState> {
     state = {};
     instances: Array<ContainerType> = [];
@@ -77,4 +78,9 @@ export default (Containers: ContainersType, mapContainersToProps: MapContainersT
         </StateContext.Consumer>
       );
     }
-  };
+  }
+
+  WithSubscription.displayName = `Subscribe(${getDisplayName(ComponentToBind)})`;
+
+  return WithSubscription;
+};
