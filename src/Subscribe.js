@@ -22,12 +22,10 @@ export default (Containers: ContainersType, mapContainersToProps: MapContainersT
   class WithSubscription extends Component<SubscribedComponentProps, SubscribedComponentState> {
     state = {};
     instances: Array<ContainerType> = [];
-
-    componentWillReceiveProps() {
-      this._unsubscribe();
-    }
+    unmounted = false;
 
     componentWillUnmount() {
+      this.unmounted = true;
       this._unsubscribe();
     }
 
@@ -38,7 +36,9 @@ export default (Containers: ContainersType, mapContainersToProps: MapContainersT
     }
 
     onUpdate = () => {
-      this.setState(DUMMY_STATE);
+      if (!this.unmounted) {
+        this.setState(DUMMY_STATE);
+      }
     };
 
     _createInstances(map: ContainerMapType | null, containers: ContainersType): Array<ContainerType> {
