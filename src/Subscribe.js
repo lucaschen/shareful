@@ -21,23 +21,29 @@ export class SubscribeTag extends SubscribeBase {
   }
 }
 
-export default (Containers: ContainersType, mapContainersToProps: MapContainersToPropsType) => (
-  ComponentToBind: ComponentType<Object>
-) => {
-  class WithSubscription extends SubscribeBase {
-    render() {
-      return (
-        <StateContext.Consumer>
-          {map => {
-            const sharedData = this._createInstances(map, Containers);
-            return <ComponentToBind {...this.props} {...mapContainersToProps(...sharedData, this.props)} />;
-          }}
-        </StateContext.Consumer>
-      );
+export default (Containers: ContainersType, mapContainersToProps: MapContainersToPropsType) => {
+  Containers.forEach(Container => {
+    if (!Container || !Container.prototype || !(Container.prototype instanceof ContainerClass)) {
+      throw new Error("Provided container is not an instance of Container!");
     }
-  }
+  });
 
-  WithSubscription.displayName = `Subscribe(${getDisplayName(ComponentToBind)})`;
+  return (ComponentToBind: ComponentType<Object>) => {
+    class WithSubscription extends SubscribeBase {
+      render() {
+        return (
+          <StateContext.Consumer>
+            {map => {
+              const sharedData = this._createInstances(map, Containers);
+              return <ComponentToBind {...this.props} {...mapContainersToProps(...sharedData, this.props)} />;
+            }}
+          </StateContext.Consumer>
+        );
+      }
+    }
 
-  return WithSubscription;
+    WithSubscription.displayName = `Subscribe(${getDisplayName(ComponentToBind)})`;
+
+    return WithSubscription;
+  };
 };

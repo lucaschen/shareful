@@ -23,7 +23,7 @@ export default {
   external: [...Object.keys(pkg.dependencies || {}), ...Object.keys(pkg.peerDependencies || {})],
   plugins: [
     babel({
-      plugins: ["external-helpers"]
+      plugins: ["@babel/external-helpers"]
     }),
     uglify()
   ]
